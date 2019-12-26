@@ -74,10 +74,12 @@ namespace WebApiMoneyxchange.Controllers
         [ResponseType(typeof(Conversion))]
         public IHttpActionResult PostConversion(Conversion conversion)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+
 
             db.Conversion.Add(conversion);
             db.SaveChanges();
