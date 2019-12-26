@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2ffe9e6732b42bca3f599101597c68b" Name="Diagram1">
+        <EntityTypeShape EntityType="MoneyxchangeDBModel.Conversion" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyxchangeDBModel.Currency" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyxchangeDBModel.Role" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MoneyxchangeDBModel.User" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="MoneyxchangeDBModel.FK_Conversion_CurrencyFrom" ManuallyRouted="false" />
+        <AssociationConnector Association="MoneyxchangeDBModel.FK_Conversion_CurrencyTo" ManuallyRouted="false" />
+        <AssociationConnector Association="MoneyxchangeDBModel.FK_Conversion_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MoneyxchangeDBModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
