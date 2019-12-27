@@ -8,13 +8,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using BusinessLayer.Services;
 using DataLayer;
+using WebApiMoneyxchange.Enums;
 
 namespace WebApiMoneyxchange.Controllers
 {
     public class ConversionsController : ApiController
     {
         private DBModel db = new DBModel();
+        private ConversionService _conversionService = new ConversionService();
 
         // GET: api/Conversions
         public IQueryable<Conversion> GetConversion()
@@ -79,7 +82,23 @@ namespace WebApiMoneyxchange.Controllers
             //    return BadRequest(ModelState);
             //}
 
+            /// Search in Database by conversion.fromConversion and conversion.toConversion ID to get Currency Name
+            /// 
 
+            string nameFromCurrency = "USD";
+            string nameToCurrency = "EUR";
+
+            decimal exchangeRate = _conversionService.GetExchange(nameFromCurrency, nameToCurrency, conversion.fromValue);
+
+
+            Conversion newConversion = new Conversion
+            {
+                fromConversion = (int)CurrencyEnum.Dollar,
+                toConversion = (int)CurrencyEnum.Euro,
+                conversionDate = DateTime.Today,
+                conversionUser = 1, // Admin user
+                fromValue = conversion.fromValue,
+            };
 
             db.Conversion.Add(conversion);
             db.SaveChanges();

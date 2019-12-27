@@ -15,7 +15,7 @@ namespace BusinessLayer.Services
         const string baseUrl = "https://free.currconv.com/api/v7/";
         const string apiKey = "5f659d8e8f8ff8f89494";        
 
-        public double GetExchange(string from, string to, decimal amount)
+        public decimal GetExchange(string from, string to, decimal amount)
         {
             // Re asign 'from' and 'to' values            
 
@@ -23,8 +23,11 @@ namespace BusinessLayer.Services
             string url = baseUrl + "convert?q=" + from + "_" + to + "&compact=ultra&apiKey=" + apiKey;
 
             var jsonString = GetResponse(url);
-            return JObject.Parse(jsonString).First.First["val"].ToObject<double>();
+            double rate = JObject.Parse(jsonString).First.First[from + "_" + to].ToObject<double>();
 
+            // Calculates result
+            var result = amount * (decimal)rate;
+            return result;
         }
 
         /// <summary>
