@@ -18,6 +18,7 @@ namespace WebApiMoneyxchange.Controllers
     {
         private DBModel db = new DBModel();
         private ConversionService _conversionService = new ConversionService();
+        private CurrencyService _currencyService = new CurrencyService();
 
         // GET: api/Conversions
         public IQueryable<Conversion> GetConversion()
@@ -77,35 +78,40 @@ namespace WebApiMoneyxchange.Controllers
         [ResponseType(typeof(Conversion))]
         public Conversion PostConversion(Conversion conversion)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            /// Search in Database by conversion.fromConversion and conversion.toConversion ID to get Currency Name
-            /// 
-
-            string nameFromCurrency = "USD";
-            string nameToCurrency = "EUR";
-
-            decimal exchangeRate = _conversionService.GetExchange(nameFromCurrency, nameToCurrency, conversion.fromValue);
-
-
-            Conversion newConversion = new Conversion
+            try
             {
-                fromConversion = (int)CurrencyEnum.Dollar,
-                toConversion = (int)CurrencyEnum.Euro,
-                conversionDate = DateTime.Now,
-                conversionUser = 1, // Admin user
-                fromValue = conversion.fromValue,
-                toValue = exchangeRate
-            };
+                /// Search in Database by conversion.fromConversion and conversion.toConversion ID to get Currency Name
+                /// 
 
-            db.Conversion.Add(newConversion);
-            db.SaveChanges();
+                string nameFromCurrency = _currencyService.GetCurrencyNameById(CurrencyEnum.Dollar);
+                string nameToCurrency = _currencyService.GetCurrencyNameById(CurrencyEnum.Euro);
 
-            //return CreatedAtRoute("DefaultApi", new { id = conversion.idConversion }, conversion);
-            return newConversion;
+                string nameFromCurrency = "USD";
+                string nameToCurrency = "EUR";
+
+                decimal exchangeRate = _conversionService.GetExchange(nameFromCurrency, nameToCurrency, conversion.fromValue);
+
+                Conversion newConversion = new Conversion
+                {
+                    fromConversion = (int)CurrencyEnum.Dollar,
+                    toConversion = (int)CurrencyEnum.Euro,
+                    conversionDate = DateTime.Now,
+                    conversionUser = 1, // Admin user
+                    fromValue = conversion.fromValue,
+                    toValue = exchangeRate
+                };
+
+                db.Conversion.Add(newConversion);
+                db.SaveChanges();
+
+                //return CreatedAtRoute("DefaultApi", new { id = conversion.idConversion }, conversion);
+                return newConversion;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         // DELETE: api/Conversions/5

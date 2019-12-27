@@ -56,6 +56,7 @@
     <Compile Include="Currency.cs">
       <DependentUpon>MoneyxchangeModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="MoneyxchangeModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
