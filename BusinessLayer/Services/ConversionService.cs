@@ -23,7 +23,7 @@ namespace BusinessLayer.Services
             string url = baseUrl + "convert?q=" + from + "_" + to + "&compact=ultra&apiKey=" + apiKey;
 
             var jsonString = GetResponse(url);
-            double rate = JObject.Parse(jsonString).First.First[from + "_" + to].ToObject<double>();
+            decimal rate = JObject.Parse(jsonString).First.ToObject<decimal>();
 
             // Calculates result
             var result = amount * (decimal)rate;

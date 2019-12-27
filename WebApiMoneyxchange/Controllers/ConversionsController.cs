@@ -75,7 +75,7 @@ namespace WebApiMoneyxchange.Controllers
 
         // POST: api/Conversions
         [ResponseType(typeof(Conversion))]
-        public IHttpActionResult PostConversion(Conversion conversion)
+        public Conversion PostConversion(Conversion conversion)
         {
             //if (!ModelState.IsValid)
             //{
@@ -95,15 +95,17 @@ namespace WebApiMoneyxchange.Controllers
             {
                 fromConversion = (int)CurrencyEnum.Dollar,
                 toConversion = (int)CurrencyEnum.Euro,
-                conversionDate = DateTime.Today,
+                conversionDate = DateTime.Now,
                 conversionUser = 1, // Admin user
                 fromValue = conversion.fromValue,
+                toValue = exchangeRate
             };
 
-            db.Conversion.Add(conversion);
+            db.Conversion.Add(newConversion);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = conversion.idConversion }, conversion);
+            //return CreatedAtRoute("DefaultApi", new { id = conversion.idConversion }, conversion);
+            return newConversion;
         }
 
         // DELETE: api/Conversions/5
