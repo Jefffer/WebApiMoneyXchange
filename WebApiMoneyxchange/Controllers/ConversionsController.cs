@@ -80,14 +80,12 @@ namespace WebApiMoneyxchange.Controllers
         {
             try
             {
-                /// Search in Database by conversion.fromConversion and conversion.toConversion ID to get Currency Name
-                /// 
+                // Search in Database by conversion.fromConversion and conversion.toConversion ID to get Currency Name
+                string nameFromCurrency = _currencyService.GetCurrencyNameById((int)CurrencyEnum.Dollar);
+                string nameToCurrency = _currencyService.GetCurrencyNameById((int)CurrencyEnum.Euro);
 
-                string nameFromCurrency = _currencyService.GetCurrencyNameById(CurrencyEnum.Dollar);
-                string nameToCurrency = _currencyService.GetCurrencyNameById(CurrencyEnum.Euro);
-
-                string nameFromCurrency = "USD";
-                string nameToCurrency = "EUR";
+                //string nameFromCurrency = "USD";
+                //string nameToCurrency = "EUR";
 
                 decimal exchangeRate = _conversionService.GetExchange(nameFromCurrency, nameToCurrency, conversion.fromValue);
 

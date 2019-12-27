@@ -26,7 +26,7 @@ namespace DataLayer
         }
     
         public virtual DbSet<Conversion> Conversion { get; set; }
-        public virtual DbSet<Currency> Currency { get; set; }
+        public virtual DbSet<DBModel> Currency { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

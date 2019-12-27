@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataLayer;
+using DataLayer.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +12,10 @@ namespace BusinessLayer.Services
     {
         public string GetCurrencyNameById(int id)
         {
-            // Go to Database to get currency name by id
-
-
+            // Go to Repository to get currency name by id
+            CurrencyRepository repo = new CurrencyRepository();
+            Currency currency = repo.GetById(id);
+            return currency.nameCurrency;
         }
     }
 }
