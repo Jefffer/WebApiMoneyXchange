@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{B6FA7338-FEF7-40B6-884E-27F969A64AFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moneyxchange.Tests", "Moneyxchange.Tests\Moneyxchange.Tests.csproj", "{15FA0EFB-BE5C-4F1F-827A-4738CF658ED5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B6FA7338-FEF7-40B6-884E-27F969A64AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6FA7338-FEF7-40B6-884E-27F969A64AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6FA7338-FEF7-40B6-884E-27F969A64AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15FA0EFB-BE5C-4F1F-827A-4738CF658ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FA0EFB-BE5C-4F1F-827A-4738CF658ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FA0EFB-BE5C-4F1F-827A-4738CF658ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FA0EFB-BE5C-4F1F-827A-4738CF658ED5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
