@@ -108,8 +108,7 @@ namespace WebApiMoneyxchange.Controllers
             catch
             {
                 return null;
-            }
-            
+            }            
         }
 
         // DELETE: api/Conversions/5

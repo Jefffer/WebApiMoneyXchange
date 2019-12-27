@@ -15,6 +15,13 @@ namespace BusinessLayer.Services
         const string baseUrl = "https://free.currconv.com/api/v7/";
         const string apiKey = "5f659d8e8f8ff8f89494";        
 
+        /// <summary>
+        /// Get converted value from one currency to another
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public decimal GetExchange(string from, string to, decimal amount)
         {
             // Re asign 'from' and 'to' values            
@@ -51,6 +58,5 @@ namespace BusinessLayer.Services
 
             return jsonString;
         }
-
     }
 }
